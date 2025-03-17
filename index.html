@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Validation Form</title>
+    <script src="index.js" defer></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <button id="openDialog">Open Dialog</button>
+    <form novalidate>
+      <dialog>
+        <label for="mail">Email: 
+            <input type="email" id="mail" name="mail" required/>
+            <span class="error" aria-live="polite"></span>
+        </label>
+        <label for="country"
+          >Country: <input type="text" id="country" name="country" required minlength="2"
+        /></label>
+        <label for="postal"
+          >Postal Code: <input type="text" id="postal" name="postal" required
+        /></label>
+        <label for="password"
+          >Password: <input type="password" id="password" name="password" required
+        /></label>
+        <button id="submit">Submit</button>
+      </dialog>
+    </form>
+  </body>
+</html>
