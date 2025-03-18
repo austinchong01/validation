@@ -11,19 +11,43 @@
     <button id="openDialog">Open Dialog</button>
     <form novalidate>
       <dialog>
-        <label for="mail">Email: 
-            <input type="email" id="mail" name="mail" required/>
-            <span class="error" aria-live="polite"></span>
+        <label for="mail"
+          >Email:
+          <input type="email" id="mail" name="mail" required />
+          <span class="error active" aria-live="polite"></span>
         </label>
         <label for="country"
-          >Country: <input type="text" id="country" name="country" required minlength="2"
-        /></label>
+          >Country:
+          <input
+            type="text"
+            id="country"
+            name="country"
+            required
+            minlength="2" />
+          <span class="error active" aria-live="polite"></span
+        ></label>
         <label for="postal"
-          >Postal Code: <input type="text" id="postal" name="postal" required
-        /></label>
+          >Postal Code:
+          <input
+            type="text"
+            id="postal"
+            name="postal"
+            required
+            minlength="5"
+            maxlength="5"
+          />
+          <span class="error active" aria-live="polite"></span>
+        </label>
         <label for="password"
-          >Password: <input type="password" id="password" name="password" required
-        /></label>
+          >Password:
+          <input
+            type="password"
+            id="password"
+            name="password"
+            required
+            minlength="5" />
+          <span class="error active" aria-live="polite"></span
+        ></label>
         <button id="submit">Submit</button>
       </dialog>
     </form>

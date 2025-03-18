@@ -2,30 +2,42 @@ const dialog = document.querySelector("dialog");
 const openDialog = document.querySelector("#openDialog");
 const submit = document.querySelector("#submit");
 
-const email = document.querySelector("#mail");
-const country = document.querySelector("#country");
-const postal = document.querySelector("#postal");
-const password = document.querySelector("#password");
-
 openDialog.addEventListener("click", () => {
   dialog.showModal();
 });
 
-email.addEventListener("input", (e) => {
-  if (!email.validity.valid) {
-    email.setCustomValidity("Please input a valid email address!");
-    console.log("reached")
+document.addEventListener("input", (e) => {
+  const field = e.target;
+  const fieldName = field.getAttribute("id");
+  const errorField = document.querySelector(`#${fieldName} + span.error`);
+  if (field.validity.valid) {
+    errorField.textContent = "";
+    errorField.className = "error";
   } else {
-    email.setCustomValidity("");
+    showError(field, errorField);
   }
 });
 
-country.addEventListener("input", (e) => {
-  if (country.validity.tooShort || country.validity.valueMissing) {
-    country.setCustomValidity("Please input a valid Country!");
+function showError(field, errorField) {
+  if (field.validity.valueMissing) {
+    errorField.textContent = "Please provide an input";
+  } else if (field.validity.typeMismatch) {
+    errorField.textContent = "Invalid email address";
+  } else if (field.validity.tooShort) {
+    errorField.textContent = "Input too short"
+  } else if (field.validity.tooLong){
+    errorField.textContent = "Input too long"
+  }
+  errorField.className = "error active";
+}
+
+submit.addEventListener("click", (e) => {
+  e.preventDefault();
+  const check = document.querySelectorAll(".active");
+  if (check.length == 0) {
+    dialog.close();
+    console.log("High Five!");
   } else {
-    country.setCustomValidity("");
+    console.log("Check Fields!");
   }
 });
-
-
